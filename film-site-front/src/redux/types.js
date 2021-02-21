@@ -1,4 +1,5 @@
 export const ADD_FILM = 'ADD_FILM'
+export const SUBMIT_FILM = 'SUBMIT_FILM'
 export const DELETE_FILM = 'DELETE_FILM'
 export const UPDATE_TITLE = 'UPDATE_TITLE'
 export const UPDATE_YEAR = 'UPDATE_YEAR'

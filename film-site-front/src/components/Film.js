@@ -5,26 +5,27 @@ import '../styles/film-style.css'
 
 const Film = ({ title, releaseYear, stars, format, id }) => {
     const [aboutStatus, setAboutStatus] = useState(false)
+    const [personalID,setID] = useState()
     const dispatch = useDispatch()
     const handleStatus = () => {
         setAboutStatus(!aboutStatus)
+        console.log(stars)
     }
     const deleteHandler = (e) => {
-        console.log(e.target.id)
         dispatch(deleteFilm(e.target.id))
-        setAboutStatus(false)
     }
+    
     return (
         <div className='card'>
             <div className='card-body'>
                 <div>
                     <div>
-                        Title : {title}<br />
+                        {title}<br />
                         Year : {releaseYear}
                     </div>
                     {aboutStatus &&
                         <div>
-                            <div>Stars : {stars}</div>
+                            <div>Stars: {stars + ''}</div>
                             <div>Format : {format}</div>
                             <button className='btn btn-danger' id={id} onClick={deleteHandler}>Delete Film</button>
                         </div>

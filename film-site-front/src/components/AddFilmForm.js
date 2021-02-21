@@ -9,10 +9,10 @@ const AddFilm = () => {
     const [showModal, setShowModal] = useState(false)
     const dispatch = useDispatch()
     const film = useSelector(state => ({
-        name: state.film.name,
-        year: state.film.year,
-        stars: state.film.stars,
-        format: state.film.format,
+        title: state.film.newTitle,
+        releaseYear: state.film.newReleaseYear,
+        stars: state.film.newStars,
+        format: state.film.newFormat,
     }))
     const showModalHandler = () => {
         setShowModal(true)
@@ -37,7 +37,7 @@ const AddFilm = () => {
         dispatch(updateFormat(value))
     }
     const submitHandler = () => { 
-        dispatch(addFilm())
+        dispatch(addFilm(film))
         setShowModal(false) 
     }
     return (

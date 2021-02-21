@@ -10,13 +10,14 @@ const initialState = {
 }
 
 const filmReducer = (state = initialState, action) => {
+    const {payload} = action // принимает в обьект только payload из экшна
     switch (action.type) {
         case ADD_FILM:
             const newFilm ={
-                title : state.newTitle,
-                releaseYear : state.newReleaseYear,
-                stars : state.newStars,
-                format : state.newFormat,
+                title : payload.title,
+                releaseYear : payload.releaseYear,
+                stars : payload.stars,
+                format : payload.format,
                 _id : uuidv4()
             }
             return { 
