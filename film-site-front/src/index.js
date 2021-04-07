@@ -7,7 +7,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import rootReducer from './redux/rootReducer';
 import { Provider } from 'react-redux';
-import { approwedWordsMiddleware } from './redux/middleware';
 
 
 const store = createStore(rootReducer, compose(

@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import './App.css';
 import AddFilm from './components/AddFilmForm'
 import ChooseFile from './components/ChooseFile';
 import Films from './components/Films';
+import SearchInput from './components/SearchInput';
 
 
 function App() {
+  const [label, setLabel] = useState(true)
+  const [searchTerm, setSearchTerm] = useState('')
   return (
     <div >
       <div className='header_block'>
@@ -12,14 +16,14 @@ function App() {
           <AddFilm />
         </div>
         <div className="button_container">
-          <button type="button" className="btn btn-dark btn-lg">Search</button>
+          <SearchInput setLabel={setLabel} setSearchTerm={setSearchTerm} label={label} />
         </div>
         <div className="button_container">
-          <ChooseFile/>
+          <ChooseFile />
         </div>
       </div>
       <div>
-        <Films/>
+        <Films searchTerm={searchTerm} label={label} />
       </div>
     </div>
   );

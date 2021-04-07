@@ -1,0 +1,30 @@
+.form-control{
+    font-size: 1.25rem;
+    background-color: #27292c;
+    color : white;
+    height: 3.1rem;
+    width: 20px;
+}
+
+.form-control:focus{
+    background-color: #27292c;
+    color : white;
+}
+.form-control::placeholder{
+    color : rgb(220, 208, 208)
+}
+.item{
+    border-radius: .3rem;
+    margin-right: 10px;
+}
+.button{
+    width:100px;
+    text-align: center;
+    
+}
+.name_of_button{
+    text-align: center;
+    margin-bottom: 0;
+    padding : .18rem
+    /* line-height: 0 */
+}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { deleteFilm } from '../redux/actions'
 import '../styles/film-style.css'
@@ -9,9 +9,9 @@ const Film = ({ title, releaseYear, stars, format, id }) => {
     const dispatch = useDispatch()
     const handleStatus = () => {
         setAboutStatus(!aboutStatus)
-        console.log(stars)
     }
     const deleteHandler = (e) => {
+        console.log(e.target.id)
         dispatch(deleteFilm(e.target.id))
     }
     

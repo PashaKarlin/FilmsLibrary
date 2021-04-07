@@ -5,7 +5,7 @@ import { Loader } from './Loader';
 import { fetchFilms } from '../redux/actions';
 
 
-const Films = () => {
+const Films = ({ searchTerm, label }) => {
     const films = useSelector(state => state.film.films)
     const loading = useSelector(state => state.app.loading)
     const dispatch = useDispatch()
@@ -14,26 +14,49 @@ const Films = () => {
         dispatch(fetchFilms())
     }, [])
 
-if(loading){
-    return <Loader/>
-}
+    if (loading) {
+        return <Loader />
+    }
+    const filtration = (items) => {
+        if (label) {
+            return (
+                items.filter(item => {
+                    if (searchTerm === '') {
+                        return item
+                    } else if (item.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+                        return item
+                    }
+                })
+            )
+        } else {
+            return (
+                items.filter(item => {
+                    if (searchTerm === '') {
+                        return item
+                    } else if (item.stars.includes(searchTerm)) {
+                        return item
+                    }
+                })
+            )
+        }
 
-const renderFilms = (film) => {
+    }
+    const renderFilms = (film) => {
+        return (
+            <Film
+                title={film.title}
+                releaseYear={film.releaseYear}
+                stars={film.stars}
+                format={film.format}
+                id={film._id}
+            />
+        )
+    }
     return (
-        <Film
-            title={film.title}
-            releaseYear={film.releaseYear}
-            stars={film.stars}
-            format={film.format}
-            id={film._id}
-        />
+        <div>
+            {filtration(films).map(renderFilms)}
+        </div>
     )
-}
-return (
-    <div>
-        {films.map(renderFilms)}
-    </div>
-)
 }
 
 export default Films;
